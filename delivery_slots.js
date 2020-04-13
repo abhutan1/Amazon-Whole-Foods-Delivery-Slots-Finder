@@ -34,9 +34,10 @@ function retryHasDeliverySlots(){
   var schedule_widget = document.getElementsByClassName("a-container ufss-widget-container")
   if (!IsScheduleDeliveryPage(schedule_widget)){
     chrome.runtime.sendMessage({"message": "incorrect_page"})
+    return
   }
 
-  if (!hasDeliverySlots(schedule_widget)){
+  if (hasDeliverySlots(schedule_widget)){
     chrome.runtime.sendMessage({"message": "has_delivery_slot"})
   }
   else{
