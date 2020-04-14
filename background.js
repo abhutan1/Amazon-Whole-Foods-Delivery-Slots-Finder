@@ -43,7 +43,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     else{
       alert("Sorry :(\n\nLooks like this is not the correct page. I can only start "+
             "looking for slots if you toggle me from the Schedule Your Order page.\n\n"+
-             "Go here to see how it looks like: https://github.com/abhutan1/Amazon-Whole-Foods-Delivery-Slots-Finder/Schedule_Your_Order_Page.png")
+             "Go here to see how it looks like: https://github.com/abhutan1/Amazon-Whole-Foods-Delivery-Slots-Finder/blob/master/Schedule_Your_Order_Page.png")
     }
   })
 })
