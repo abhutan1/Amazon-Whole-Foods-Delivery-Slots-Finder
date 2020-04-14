@@ -2,7 +2,7 @@
 A simple Google Chrome extension that polls for Whole Foods delivery slots on Amazon and alerts the user when a slot is found.
 
 # How do I install it?
-Search for the extension in the Chrome Web Store.
+Search for the extension in the Chrome Web Store or click [here](https://chrome.google.com/webstore/detail/amazon-whole-foods-delive/dbppijhmnaanngcbfhejflfbdecfbjfh)
 
 If you want to play around with code and develop on it, download the code from this repo and follow the instructions for **Developer Mode** from Chrome Web Store.
 
