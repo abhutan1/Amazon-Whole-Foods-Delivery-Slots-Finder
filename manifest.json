@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Amazon Whole Foods Delivery Slots Finder",
-  "version": "1.0",
+  "description": "Polls for delivery slots and alerts the user if a slot is available",
+  "version": "0.1",
   "browser_action": {
     "default_icon": "icon.png"
   },
@@ -10,5 +11,8 @@
   },
   "permissions": [
     "activeTab"
+  ],
+  "web_accessible_resources": [
+    "note.mp3"
   ]
 }
