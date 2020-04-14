@@ -25,8 +25,10 @@ chrome.browserAction.onClicked.addListener(function(tab) {
                                       "need of groceries. I can help you out " +
                                       "by finding delivery slots.\n\nJust click " +
                                       "OK and I will alert you when " +
-                                      "I find a slot.\n\nBEFORE CLICKING OK, "+
-                                      "MAKE SURE THAT THE VOLUME IS SET TO LOUD."+
+                                      "I find a slot.\n\nBEFORE CLICKING OK, \n\n"+
+                                      "1. Make sure volume is set to loud.\n"+
+                                      "2. Adjust the energy saver settings/disable "+
+                                      "sleep mode to prevent me from dying"+
                                       "\n\nI suggest that you minimize this window "+
                                       "and open a new one to browse the web. "+
                                       "Toggle me at any point "+
