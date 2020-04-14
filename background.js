@@ -37,7 +37,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     if (find_delivery_slots){
       delivery_slots_script_running = true
       chrome.tabs.executeScript({
-        file: 'delivery_slots.js'
+        file: 'content_scripts/delivery_slots.js'
       })
       return
     }
@@ -58,7 +58,7 @@ chrome.runtime.onMessage.addListener(
     if (request.clicked === "checkout_wfm_cart"){
       setTimeout(() =>
         chrome.tabs.executeScript({
-          file: 'before_you_checkout.js'
+          file: 'content_scripts/before_you_checkout.js'
         })
       , TIME_IN_5_SECONDS)
       return
@@ -67,7 +67,7 @@ chrome.runtime.onMessage.addListener(
     if (request.clicked === "before_you_checkout"){
       setTimeout(() =>
         chrome.tabs.executeScript({
-          file: 'subs_prefs.js'
+          file: 'content_scripts/subs_prefs.js'
         })
       , TIME_IN_5_SECONDS)
       return
@@ -76,7 +76,7 @@ chrome.runtime.onMessage.addListener(
     if (request.clicked === "subs_prefs"){
       setTimeout(() =>
         chrome.tabs.executeScript({
-          file: 'delivery_slots.js'
+          file: 'content_scripts/delivery_slots.js'
         })
       , TIME_IN_5_SECONDS)
       return
@@ -88,7 +88,7 @@ chrome.runtime.onMessage.addListener(
       })
       setTimeout(() =>
         chrome.tabs.executeScript({
-            file: 'checkout_wfm_cart.js'
+            file: 'content_scripts/checkout_wfm_cart.js'
         })
       , TIME_IN_5_SECONDS)
       return
@@ -99,7 +99,7 @@ chrome.runtime.onMessage.addListener(
       notify_sound_on = true
       // note.mp3 taken from Mediafire
       // Credits: http://www.mediafire.com/file/8atcqfqzptlblc5/extension-27496465.zip/file
-      let notify_sound = new Audio(chrome.runtime.getURL('note.mp3'))
+      let notify_sound = new Audio(chrome.runtime.getURL('sounds/note.mp3'))
       notify_sound_interval = setInterval(() => notify_sound.play(), TIME_IN_2_SECONDS)
       return
     }
@@ -107,7 +107,7 @@ chrome.runtime.onMessage.addListener(
     if (request.message === "correct_page_but_no_delivery_slot") {
       setTimeout(() =>
         chrome.tabs.executeScript({
-            file: 'delivery_slots.js'
+            file: 'content_scripts/delivery_slots.js'
         })
       , TIME_IN_60_SECONDS)
       return
