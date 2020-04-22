@@ -1,6 +1,7 @@
 var delivery_slots_script_running
 var notify_sound_interval
 var notify_sound_on
+var tab_id
 const TIME_IN_2_SECONDS = 2 * 1000
 const TIME_IN_5_SECONDS = 5 * 1000
 const TIME_IN_60_SECONDS = 60 * 1000
@@ -21,6 +22,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
   }
 
   if (tab.url.includes("https://www.amazon.com/gp/buy/shipoptionselect/handlers/display.html")){
+    tab_id = tab.id
     var find_delivery_slots = confirm("Hello there :)\n\nLooks like you are in " +
                                       "need of groceries. I can help you out " +
                                       "by finding delivery slots.\n\nJust click " +
@@ -36,7 +38,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
                                       "\n\nIf you do not want my help, hit Cancel.")
     if (find_delivery_slots){
       delivery_slots_script_running = true
-      chrome.tabs.executeScript({
+      chrome.tabs.executeScript(tab_id, {
         file: 'content_scripts/delivery_slots.js'
       })
       return
@@ -57,7 +59,7 @@ chrome.runtime.onMessage.addListener(
 
     if (request.clicked === "checkout_wfm_cart"){
       setTimeout(() =>
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tab_id, {
           file: 'content_scripts/before_you_checkout.js'
         })
       , TIME_IN_5_SECONDS)
@@ -66,7 +68,7 @@ chrome.runtime.onMessage.addListener(
 
     if (request.clicked === "before_you_checkout"){
       setTimeout(() =>
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tab_id, {
           file: 'content_scripts/subs_prefs.js'
         })
       , TIME_IN_5_SECONDS)
@@ -75,7 +77,7 @@ chrome.runtime.onMessage.addListener(
 
     if (request.clicked === "subs_prefs"){
       setTimeout(() =>
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tab_id, {
           file: 'content_scripts/delivery_slots.js'
         })
       , TIME_IN_5_SECONDS)
@@ -83,9 +85,7 @@ chrome.runtime.onMessage.addListener(
     }
 
     if(request.message === "incorrect_page") {
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.update(tabs[0].id, {url: "https://www.amazon.com/cart/localmarket"})
-      })
+      chrome.tabs.update(tab_id, {url: "https://www.amazon.com/cart/localmarket"})
       setTimeout(() =>
         chrome.tabs.executeScript({
             file: 'content_scripts/checkout_wfm_cart.js'
@@ -106,7 +106,7 @@ chrome.runtime.onMessage.addListener(
 
     if (request.message === "correct_page_but_no_delivery_slot") {
       setTimeout(() =>
-        chrome.tabs.executeScript({
+        chrome.tabs.executeScript(tab_id, {
             file: 'content_scripts/delivery_slots.js'
         })
       , TIME_IN_60_SECONDS)
