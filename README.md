@@ -6,12 +6,20 @@ Search for the extension in the Chrome Web Store or click [here](https://chrome.
 
 If you want to play around with code and develop on it, download the code from this repo and follow the instructions for **Developer Mode** from Chrome Web Store.
 
+**Compatibility** 
+- Google Chrome on Mac, Windows 
+- Only works for Whole Foods ordered through www.amazon.com
+
 # How does it work?
-- The underlying script in the extension can be kicked off by toggling the extension icon from the Whole Foods ![Schedule Your Order](Schedule_Your_Order_Page.png) page on www.amazon.com 
+- The script in the extension can be kicked off by clicking on the extension icon while on the the Whole Foods ![Schedule Your Order Page](Schedule_Your_Order_Page.png)
 - The script reads the webpage and tries to find delivery slots using keywords like "AM", "PM", etc. 
-- Alerts the user if a delivery slot is found. Note: The alert can be toggled off by clicking the extension icon. 
+- Alerts the user if a delivery slot is found. *Note: The alert can be toggled off by clicking the extension icon.* 
 - Tries to navigate back to the *Schedule Your Order* page if it ends up on an unknown page somehow. 
 
+**Disclaimer** 
+- This extension does not guarantee that delivery slots will be found. 
+- This extension is not an automated checkout system. It will fire an alert if a slot is found and stop. 
+
 # Credits
-- All icons (chatbots - 16x, 24x, 32x, 64x, 128x) are taken from www.flaticon.com 
-- Note.mp3 is taken from http://www.mediafire.com/file/8atcqfqzptlblc5/extension-27496465.zip/file
+- Icons (chatbots - 16x, 24x, 32x, 64x, 128x) are taken from [Flaticon](www.flaticon.com)
+- Sounds/note.mp3 is taken from [Mediafire](http://www.mediafire.com/file/8atcqfqzptlblc5/extension-27496465.zip/file)
