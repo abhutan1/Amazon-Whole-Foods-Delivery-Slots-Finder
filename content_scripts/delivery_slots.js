@@ -1,7 +1,6 @@
 function IsScheduleDeliveryPage(schedule_widget){
   for (var i = 0; i < schedule_widget.length; i++) {
-    if (schedule_widget[i].innerText.includes("Schedule your order") &&
-        schedule_widget[i].innerText.includes("Whole Foods Market"))
+    if (schedule_widget[i].innerText.includes("Schedule your order"))
     {
       return true
     }
